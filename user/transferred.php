@@ -6,7 +6,7 @@
  * Time: 09:59
  */
 
-$page_title = "All Patients";
+$page_title = "All Transferred Patients";
 require_once '../config/core.php';
 require_once 'libs/head.php';
 ?>
@@ -37,9 +37,9 @@ require_once 'libs/head.php';
                         <th>Phone Number</th>
                         <th>Gender</th>
                         <th>Date Of Birth</th>
+                        <th>Hospital Name</th>
                         <th>Age</th>
                         <th>Address</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -52,38 +52,14 @@ require_once 'libs/head.php';
                         <th>Phone Number</th>
                         <th>Gender</th>
                         <th>Date Of Birth</th>
+                        <th>Hospital Name</th>
                         <th>Age</th>
                         <th>Address</th>
-                        <th>Created At</th>
                         <th>Actions</th>
                     </tr>
                     </tfoot>
                     <tbody>
-                    <?php
-                        $sql = $db->query("SELECT * FROM patients WHERE hospital_id='$hospital_id'");
-                        while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
-                            ?>
-                            <tr>
-                                <td><?= $sn++ ?></td>
-                                <td><?= $rs['card_no'] ?></td>
-                                <td><?= $rs['fname'] ?></td>
-                                <td><?= (!empty($rs['email'])) ? $rs['email'] : 'N/A'?></td>
-                                <td><?= $rs['phone'] ?></td>
-                                <td><?= $rs['gender'] ?></td>
-                                <td><?= $rs['birth'] ?></td>
-                                <td>
-                                    <?php
-                                        $b = explode("-",$rs['birth'])[0];
-                                        echo  date('Y') - $b;
-                                    ?>
-                                </td>
-                                <td><?= $rs['address'] ?></td>
-                                <td><?= $rs['created_at'] ?></td>
-                                <td><a href="view.php?id=<?= $rs['id'] ?>" class="btn btn-primary btn-sm">View</a></td>
-                            </tr>
-                            <?php
-                        }
-                    ?>
+
                     </tbody>
                 </table>
             </div>

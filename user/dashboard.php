@@ -17,7 +17,10 @@ require_once 'libs/head.php';
         <div class="info-box-content">
             <span class="info-box-text mt-10">All Patients</span>
             <span class="info-box-number">
-
+                <?php
+                    $sql = $db->query("SELECT * FROM patients WHERE hospital_id='$hospital_id'");
+                    echo $sql->rowCount();
+                ?>
             </span>
         </div>
         <!-- /.info-box-content -->
@@ -31,7 +34,10 @@ require_once 'libs/head.php';
         <div class="info-box-content">
             <span class="info-box-text mt-10">All Doctors</span>
             <span class="info-box-number">
-
+                <?php
+                $sql = $db->query("SELECT * FROM users WHERE hospital_id='$hospital_id'");
+                echo $sql->rowCount();
+                ?>
             </span>
         </div>
         <!-- /.info-box-content -->
@@ -58,7 +64,7 @@ require_once 'libs/head.php';
                     <tr>
                         <th>SN</th>
                         <th>Full Name</th>
-                        <th>Email Address</th>
+                        <th>Gender</th>
                         <th>Phone Number</th>
                     </tr>
                     </thead>
@@ -66,13 +72,24 @@ require_once 'libs/head.php';
                     <tr>
                         <th>SN</th>
                         <th>Full Name</th>
-                        <th>Email Address</th>
+                        <th>Gender</th>
                         <th>Phone Number</th>
                     </tr>
                     </tfoot>
                     <tbody>
                     <?php
-
+                        $sql = $db->query("SELECT * FROM patients WHERE hospital_id='$hospital_id'");
+                        $s =1;
+                        while ($rs = $sql->fetch(PDO::FETCH_ASSOC)){
+                            ?>
+                            <tr>
+                                <td><?= $s++ ?></td>
+                                <td><?= $rs['fname'] ?></td>
+                                <td><?= $rs['gender'] ?></td>
+                                <td><?= $rs['phone'] ?></td>
+                            </tr>
+                            <?php
+                        }
                     ?>
                     </tbody>
                 </table>

@@ -107,9 +107,24 @@ $sn =1;
                 <li>
                     <a href="<?= base_url('user/patient.php') ?>">
                         <i class="fa fa-user text-primary"></i>
-                        <span>Registered Patient</span>
+                        <span>Registered Patients</span>
                     </a>
                 </li>
+
+                <li>
+                    <a href="<?= base_url('user/transfer.php') ?>">
+                        <i class="fa fa-user text-primary"></i>
+                        <span>Transfer Patient</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= base_url('user/record.php') ?>">
+                        <i class="fa fa-user text-primary"></i>
+                        <span>All Patient Records</span>
+                    </a>
+                </li>
+
 
                 <li>
                     <a href="<?= base_url('user/add-doctor.php') ?>">
@@ -129,6 +144,13 @@ $sn =1;
                     <a href="<?= base_url('user/register.php') ?>">
                         <i class="fa fa-user text-primary"></i>
                         <span>Patient Registration</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?= base_url('user/transferred.php') ?>">
+                        <i class="fa fa-user text-primary"></i>
+                        <span>All Transferred Patients</span>
                     </a>
                 </li>
 

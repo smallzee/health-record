@@ -17,7 +17,6 @@ if (isset($_POST['add'])){
     $fname = $data['fname'];
     $email = $data['email'];
     $phone = $data['phone'];
-    $password = $data['password'];
     $gender = $data['gender'];
     $address = $data['address'];
 
@@ -51,7 +50,7 @@ if (isset($_POST['add'])){
 
         $hospital_id = $db->lastInsertId();
 
-        $db->query("INSERT INTO users (hospital_id,fname,email,password,gender,address,phone)VALUES ('$hospital_id','$fname','$email','$password','$gender','$address','$phone')");
+        $db->query("INSERT INTO users (hospital_id,fname,email,gender,address,phone)VALUES ('$hospital_id','$fname','$email','$gender','$address','$phone')");
 
         set_flash("Hospital and doctor account has been created successfully","info");
 
@@ -123,14 +122,8 @@ require_once 'libs/head.php';
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="password" name="password" class="form-control" required placeholder="Password" id="">
-                        </div>
-                    </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label for="">Gender</label>
                             <select name="gender" class="form-control" required id="">

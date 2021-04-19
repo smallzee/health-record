@@ -15,10 +15,9 @@ if (is_doc_login()){
 
 if (isset($_POST['login'])){
     $username = $_POST['email'];
-    $password = $_POST['password'];
 
 
-    $sql = $db->query("SELECT * FROM users WHERE email='$username' and password='$password'");
+    $sql = $db->query("SELECT * FROM users WHERE email='$username'");
     $rs = $sql->fetch(PDO::FETCH_ASSOC);
 
     if ($sql->rowCount() == 0){
@@ -72,12 +71,12 @@ if (isset($_POST['login'])){
                                     <div class="form-group">
                                         <input type="email" required class="form-control email" name="email" placeholder="Email">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="pwdMask">
-                                            <input type="password" required class="form-control password" name="password" placeholder="Password">
-                                            <span class="fa fa-eye-slash pwd-toggle"></span>
-                                        </div>
-                                    </div>
+<!--                                    <div class="form-group">-->
+<!--                                        <div class="pwdMask">-->
+<!--                                            <input type="password" required class="form-control password" name="password" placeholder="Password">-->
+<!--                                            <span class="fa fa-eye-slash pwd-toggle"></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Login</button>

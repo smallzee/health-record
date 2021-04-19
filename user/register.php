@@ -9,7 +9,7 @@
 $page_title = "Patient Registration";
 require_once '../config/core.php';
 
-if (isset($_POST['birth'])){
+if (isset($_POST['add'])){
    $data = $_POST;
    $fname = $data['fname'];
    $email = $data['email'];
@@ -24,7 +24,7 @@ if (isset($_POST['birth'])){
        $error[] = "Full name should be between 3 - 100 characters";
    }
 
-   if (isset($email)){
+   if (!empty($email)){
        if (strlen($email) < 10 or strlen($email) > 150){
            $error[] = "Email address should between 10 - 150 characters";
        }
@@ -37,8 +37,14 @@ if (isset($_POST['birth'])){
    $error_count = count($error);
    if ($error_count == 0){
 
+       $db->query("INSERT INTO patients (fname,email,phone,gender,birth,address,hospital_id)VALUES ('$fname','$email','$phone','$gender','$birth','$address','$hospital_id')");
 
-       $card_no = "";
+       $last_id = $db->lastInsertId();
+       $card_no = sprintf("%05d", $last_id);
+
+       $db->query("UPDATE patients SET card_no='$card_no' WHERE id='$last_id'");
+
+       set_flash("Patient account has been created successfully","info");
 
    }else{
        $msg = ($error_count == 1) ? 'An error occurred' : 'Some error(s) occurred';
@@ -66,6 +72,8 @@ require_once 'libs/head.php';
             </div>
         </div>
         <div class="box-body">
+
+            <?php flash(); ?>
 
             <form action="" method="post">
                 <div class="row">

@@ -15,10 +15,8 @@ if (is_login()){
 
 if (isset($_POST['login'])){
     $username = $_POST['username'];
-    $password = $_POST['password'];
 
-
-    $sql = $db->query("SELECT * FROM admin WHERE username='$username' and password='$password'");
+    $sql = $db->query("SELECT * FROM admin WHERE username='$username'");
     $rs = $sql->fetch(PDO::FETCH_ASSOC);
 
     if ($sql->rowCount() == 0){
@@ -69,26 +67,6 @@ if (isset($_POST['login'])){
                                     <div class="form-group">
                                         <input type="text" required class="form-control email" name="username" placeholder="Username">
                                     </div>
-                                    <div class="form-group">
-                                        <div class="pwdMask">
-                                            <input type="password" required class="form-control password" name="password" placeholder="Password">
-                                            <span class="fa fa-eye-slash pwd-toggle"></span>
-                                        </div>
-                                    </div>
-                                    <!-- start remember-row -->
-                                    <div class="row remember-row">
-                                        <div class="col-xs-6 col-sm-6">
-                                            <label class="checkbox text-left">
-                                                <input type="checkbox" value="1" name="remember-me">
-                                                <span class="label-text">Remember me</span>
-                                            </label>
-                                        </div>
-<!--                                        <div class="col-xs-6 col-sm-6">-->
-<!--                                            <p class="forgotPwd">-->
-<!--                                                <a class="lnk-toggler" data-panel=".panel-forgot" href="#">Forgot password?</a>-->
-<!--                                            </p>-->
-<!--                                        </div>-->
-                                    </div> <!-- ./remember-row -->
                                     <div class="form-group">
                                         <button class="btn btn-lg btn-primary btn-block" name="login" type="submit">Login</button>
                                     </div>
